@@ -1,0 +1,52 @@
+
+<div *ngIf="event" class="max-w-4xl mx-auto bg-white border border-gray-300 shadow-lg rounded-lg overflow-hidden">
+    <div class="flex flex-col lg:flex-row mb-6">
+
+        <div class="w-full lg:w-1/3 bg-gray-100 p-4">
+            <img alt="Photo" class="w-full h-auto object-cover rounded-lg shadow-md" src="{{event.image}}"
+                (error)="event.image = 'assets/placeholder-290.png'" />
+        </div>
+        <div class="w-full lg:w-2/3 p-6 flex flex-col justify-between">
+            <div>
+                <div class="mb-4">
+                    <label class="block font-bold text-3xl text-gray-800 mb-1 flex justify-center p-3">
+                        {{event.title_fr}}
+                    </label>
+                </div>
+                <div class="mb-4">
+                    <label class="block font-bold text-xl text-gray-800 mb-1">
+                        Date : {{event.firstdate_begin | date: 'longDate'}}
+                    </label>
+                    <div class="flex items-center mt-2 text-gray-600">
+                        <div class="flex-1">
+                            <p class="text-lg">
+                                <strong>Lieux:</strong> {{event.location_name}}, {{event.location_address}}
+                            </p>
+                            <p class="text-lg">
+                                <strong>Ville:</strong> {{event.location_city ? event.location_city : 'Aucune donnée'}}
+                            </p>
+                        </div>
+                        <i class="fas fa-map-marker-alt text-2xl text-blue-500 ml-4"></i>
+                    </div>
+                </div>
+            </div>
+            <button  (click)="organizeEvent()"class="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition duration-300 mt-4 w-full lg:w-auto">
+                Organiser une sortie
+            </button>
+        </div>
+    </div>
+    <section class="p-6 bg-gray-50">
+        <h2 class="text-2xl font-bold mb-4 text-gray-800 border-b-2 pb-2 border-gray-300">
+            Description :
+        </h2>
+        <p class="text-lg text-gray-700 leading-relaxed" [innerHTML]="event.longdescription_fr"></p>
+    </section>
+
+
+
+
+</div>
+<div class="max-w-4xl mx-auto bg-white border border-gray-300 shadow-lg  overflow-hidden">
+    <div id="map" class="" style="height: 250px;"></div>
+
+</div>

@@ -1,0 +1,90 @@
+<!-- <div *ngIf="userInfo">
+  <h2>Bienvenue, {{ userInfo.name }}</h2>
+  <p>Email : {{ userInfo.email }}</p>
+  <img [src]="userInfo.picture" alt="Profile Picture">
+
+  <button (click)="logout()">Logout</button>
+</div> -->
+<div *ngIf="userInfo" class="container mx-auto max-w-4xl bg-white shadow-lg rounded-lg p-6 border border-gray-300">
+
+
+
+
+
+    <div class="flex justify-between items-center mb-6">
+        <h1 class="text-3xl font-bold text-gray-800">Profil membre</h1>
+        <div class="relative">
+            <i class="fas fa-user-circle text-4xl text-gray-600"></i>
+        </div>
+    </div>
+
+<div class="flex items-center mb-6 md:flex-row flex-col">
+    <div class="w-full md:w-1/4">
+        <img [src]="userInfo.picture" alt="Profile Picture" class="w-1/3 md:w-full rounded-full shadow-lg">
+    </div>
+    <div class="w-full md:w-3/4 md:pl-6">
+        <div class="flex flex-col space-y-4">
+            <h2 class="text-xl font-bold text-gray-800">{{ userInfo.name }}</h2>
+            <h2 class="text-lg font-semibold text-gray-600">{{ userInfo.email }}</h2>
+            <div>
+                <button (click)="logout()" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                    Logout
+                </button>
+            </div>
+            <div class="max-w-2xl p-6 bg-white shadow-md rounded-lg">
+                <h3 class="text-xl font-semibold mb-4 text-gray-800">Votre bio</h3>
+            
+                <textarea [(ngModel)]="bio" placeholder="Ajoutez votre bio ici..."
+                    class="w-full h-40 p-4 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                                <p *ngIf="bio" class="text-gray-600 mt-4">
+                                    {{ bio }}
+                                </p>
+                            </textarea>
+                <button (click)="saveBio()"
+                    class="mt-4 w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300">
+                    Enregistrer la bio
+                </button>
+            </div>
+            <!-- <div>
+                <h3>Changer la photo de profil</h3>
+                <input type="file" (change)="onFileSelected($event)">
+                <button (click)="uploadProfilePicture()">Upload Picture</button>
+            </div> -->
+        </div>
+    </div>
+</div>
+    <div>
+        <div>
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">Liste des sorties</h3>
+            <div *ngFor="let event of organizedEvents" class="mb-4 p-4 bg-white shadow rounded-lg">
+                <div class="flex items-center bg-gray-100 p-4 rounded-lg shadow-md">
+                    <img [src]="event.image" alt="Event Image" class="w-26 h-20 object-cover rounded-lg shadow-md" />
+                    <div class="flex-1">
+                        <h4 class="text-xl font-semibold text-gray-800">{{ event.name }}</h4>
+                        <p class="mb-1"><strong>Localisation:</strong> {{ event.location_name }}, {{
+                            event.location_address }}</p>
+                        <p class="mb-1"><strong>Date:</strong> {{ event.firstdate_begin | date: 'longDate' }}</p>
+                    </div>
+                    <a [routerLink]="['/home/', event.slug]" class="text-blue-500 hover:text-blue-700 mt-4">
+                        Voir plus
+                    </a>
+                </div>
+            </div>
+        </div>
+      <!-- <div *ngIf="organizedEvents.length > 0" class="max-w-4xl mx-auto p-6">
+                <h2 class="text-2xl font-bold mb-4">Организованные события</h2>
+                <div *ngFor="let event of organizedEvents" class="mb-4 p-4 bg-white shadow rounded-lg">
+                    <h3 class="text-xl font-semibold mb-2">{{ event.name }}</h3>
+                    <p class="mb-1"><strong>Дата:</strong> {{ event.firstdate_begin | date: 'longDate' }}</p>
+                    <p class="mb-1"><strong>Место:</strong> {{ event.location_name }}, {{ event.location_address }}</p>
+                    <p class="mb-1"><strong>Город:</strong> {{ event.location_city }}</p>
+                    <img [src]="event.image" alt="Event Image" class="w-full h-auto object-cover rounded-lg shadow-md" />
+                </div>
+            </div> -->
+        
+        <div *ngIf="organizedEvents.length === 0" class="text-center p-6">
+            <p>Vous n'avez pas encore d'événements organisés.</p>
+        </div>
+
+    </div>
+</div>
