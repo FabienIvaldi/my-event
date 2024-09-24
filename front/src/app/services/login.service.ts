@@ -7,7 +7,7 @@ import { Observable, of } from 'rxjs';
 })
 export class LoginService {
   private googleAuthUrl = 'https://accounts.google.com/o/oauth2/auth';
-  private clientId = '582633277622-bsl72jbdt70hmjga4n803r7h8rge5bkn.apps.googleusercontent.com';
+  private clientId = 'CLIENT_ID';
   private redirectUri = 'http://localhost:4200/callback'; // adjust this to your app's redirect URI
   private scope = 'email profile';
 

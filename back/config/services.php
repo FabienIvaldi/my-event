@@ -43,9 +43,5 @@ return [
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
         'redirect' => env('GOOGLE_REDIRECT'),
     ],
-    // 'google' => [
-    //     'client_id' => env('582633277622-bsl72jbdt70hmjga4n803r7h8rge5bkn.apps.googleusercontent.com'),
-    //     'client_secret' => env('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'),
-    //     'redirect' => env('http://localhost:8000/callback/googleT'),
-    // ],
+    
 ];
